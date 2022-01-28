@@ -3,7 +3,6 @@ from flask_sqlalchemy import SQLAlchemy
 
 app = Flask(__name__)
 
-# /// = relative path, //// = absolute path
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite3'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
@@ -14,14 +13,15 @@ class Todo(db.Model):
     title = db.Column(db.String(100))
     complete = db.Column(db.Boolean)
 
+# Visnu or Atharv, we can add some pre-written to-do examples (as with most sites) at this point
 @app.before_first_request
 def create_tables():
     db.create_all()
 
 @app.route("/")
 def home():
-    todo_list = Todo.query.all()
-    return render_template("base.html", todo_list=todo_list)
+    collection = Todo.query.all()
+    return render_template("index.html", td_list=collection)
 
 
 @app.route("/add", methods=["POST"])

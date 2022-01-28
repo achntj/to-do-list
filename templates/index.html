@@ -11,32 +11,33 @@
       rel="shortcut icon"
       href="{{ url_for('static', filename='avatar.png') }}"
     />
-    <title>Todo App</title>
+    <title>TodoList for Everyone</title>
   </head>
 
   <body>
-    <div style="margin-top: 50px" class="ui container">
-      <h1 class="ui center aligned header">To Do App</h1>
+    <div style="margin-top: 50px">
+      <h1>To Do App</h1>
       <p>Get Stuff Done!</p>
       <p>Built by <a href="https://achintyajha.in">Achintya Jha</a></p>
 
-      <form class="ui form" action="/add" method="post">
-        <div class="field">
+      <form action="/add" method="post">
+        <div>
           <input
             required
             type="text"
             name="title"
             placeholder="Add to the list.."
-          /><br />
+          />
+          <br />
         </div>
-        <button class="ui blue button" type="submit">Add</button>
+        <button type="submit">Add</button>
       </form>
 
       <hr />
 
-      {% for todo in todo_list %}
-      <div class="ui segment">
-        <p class="ui big header">{{todo.id }} | {{ todo.title }}</p>
+      {% for todo in td_list %}
+      <div>
+        <p>{{todo.id }} | {{ todo.title }}</p>
         ( {% if todo.complete == False %}
         <span>Not Complete</span>
         {% else %}
