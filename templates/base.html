@@ -43,12 +43,12 @@
         <span>Completed</span>
         {% endif %} )
         <br />
-        <button class="green">
-          <a class="button" href="/update/{{ todo.id }}">Update</a>
-        </button>
-        <button class="red">
-          <a class="button" href="/delete/{{ todo.id }}">Delete</a>
-        </button>
+        <a href="/update/{{ todo.id }}">
+          <button class="green">Update</button>
+        </a>
+        <a href="/delete/{{ todo.id }}">
+          <button class="red">Delete</button>
+        </a>
       </div>
       {% endfor %}
     </div>
